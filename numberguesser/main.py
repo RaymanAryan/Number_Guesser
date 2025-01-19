@@ -1,5 +1,5 @@
 import random
-
+from db.dao import *
 
 def guess_game(range_limit):
     target_number = random.randint(0, range_limit)
@@ -16,6 +16,7 @@ def guess_game(range_limit):
                 print("Try smaller <")
             else:
                 print(f"Correct! You guessed it in {attempts} attempts.")
+                save_game_data(target_number, attempts, range_limit)
                 break
         except ValueError:
             print("Invalid input. Please enter a number.")
