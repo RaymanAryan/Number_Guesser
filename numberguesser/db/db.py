@@ -22,7 +22,8 @@ class GameData(Base):
 if not os.path.exists("guess_game.db"):
     engine = create_engine('sqlite:///guess_game.db', echo=False)
     Base.metadata.create_all(engine)  # Ensure tables are created
-engine = create_engine('sqlite:///guess_game.db', echo=False)
+else:
+    engine = create_engine('sqlite:///guess_game.db', echo=False)
 Session = sessionmaker(bind=engine)
 session = Session()
 
